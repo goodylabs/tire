@@ -28,6 +28,10 @@ module Tire
         @value = { :range => { field => value } }
       end
 
+      def geo_shape(field, options)
+        @value = {:geo_shape => { field => { :shape => options }}}
+      end
+
       def string(value, options={})
         @value = { :query_string => { :query => value } }
         @value[:query_string].update(options)
